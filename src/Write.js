@@ -1,43 +1,38 @@
 import React, { useState } from 'react';
 import './Write.css';
 
-export default function Write(props) {
+export default function Write(topics, setTopics, initialData, onClose) {
   const [newPost, setNewPost] = useState({
-    name: "",
-    profile: "",
-    title: "",
-    content: "",
-    price: "",
-    image: "", // 이미지 파일의 경로를 저장할 변수 추가
-    item: ""
+    name: initialData?.name || "",
+    profile: initialData?.profile || "",
+    title: initialData?.title || "",
+    content: initialData?.content || "",
+    price: initialData?.price || "",
+    image: initialData?.image || "",
+    item: initialData?.item || ""
+
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'image') {
-      // 파일 선택 시 파일 내용을 읽고 업로드
-      const file = e.target.files[0];
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        // 파일의 내용을 읽어와서 이미지 경로를 설정
-        setNewPost({
-          ...newPost,
-          image: reader.result, // 파일 내용을 이미지 경로로 설정
-        });
-      };
-      reader.readAsDataURL(file);
-    } else {
-      // 이미지가 아닌 다른 입력 필드는 기존과 동일하게 처리
-      setNewPost({
-        ...newPost,
-        [name]: value,
-      });
-    }
+    setNewPost({
+      ...newPost,
+      [name]: value,
+    });
   };
 
   const handleSubmit = () => {
+    if (initialData) {
+      // 수정 모드에서는 기존 항목을 업데이트
+      const updatedTopics = topics.map(topic =>
+        topic.id === initialData.id ? { ...topic, ...newPost } : topic
+      );
+      setTopics(updatedTopics);
+      alert("수정 완료 !");
+    } else {
+
     const newTopic = {
-      id: props.topics.length + 1,
+      id: topics.length + 1,
       profile: newPost.profile,
       name: newPost.name,
       image: newPost.image,
@@ -48,10 +43,12 @@ export default function Write(props) {
       like: false 
     };
 
-    props.setTopics(prevTopics => [...prevTopics, newTopic]);
-    console.log("Updated topics in Main:", props.topics);
+
+    setTopics(prevTopics => [...prevTopics, newTopic]);
+    console.log("Updated topics in Main:", topics);
     alert("작성 완료 !");
     
+
     setNewPost({  
       name: "",
       profile: '',
@@ -61,7 +58,10 @@ export default function Write(props) {
       title: "",
       content: "",
     });
+    onClose();
+
   };
+};
 
   return (
     <div className='Writeback'>
@@ -100,6 +100,7 @@ export default function Write(props) {
         <button className='okay' onClick={handleSubmit}>작성</button>
         <button className='okay'>취소</button>
       </div>
+      
     </div>
   );
 }
