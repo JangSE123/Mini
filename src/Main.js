@@ -87,7 +87,7 @@ export default function Main() {
                 <Routes>
                     <Route className='content' path='/Content' element={<Content topics={topics} handleLike={handleLike} />} />
                     <Route path='/Chat' element={<Chat />} />
-                    <Route path='/MyPage' element={<MyPage />} />
+                    <Route path='/MyPage' element={<MyPage topics={topics} setTopics={setTopics} handleLike={handleLike} />} />
                     <Route path='/Write' element={<Write topics={topics} setTopics={setTopics} />} />
                 </Routes>
             </div>
