@@ -1,0 +1,103 @@
+.Writeback {
+position: relative; /* 상대 위치 설정 */
+background-color: lightgrey;
+border: 2px solid #FFFFFF;
+border-radius: 10px;
+margin: 0 auto;
+margin-top: 30px;
+height: 600px;
+width: 1000px;
+}
+
+
+.profile {
+position: absolute; /* 절대 위치 설정 */
+top: 30px; /* 원하는 상단 여백 조절 */
+left: 30px; /* 원하는 좌측 여백 조절 */
+width: 100px;
+height: 100px;
+border-radius: 50%;
+margin-top: 20px;
+}
+
+.name {
+position: absolute; 
+margin-top: 170px; 
+margin-left: 60px; 
+}
+
+.image{
+position: absolute; /* 절대 위치 설정 */
+top: 30px; /* 원하는 상단 여백 조절 */
+left: 200px; /* 원하는 좌측 여백 조절 */
+width: 250px;
+height: 250px;
+margin-top: 90px;
+}
+
+.input1 {
+position: absolute;
+top: 50px;
+left: 550px;
+font-size: 30px; /* 글자 크기 조절 */
+}
+
+.input1 table {
+    width: 100%; /* 테이블을 100% 너비로 설정 */
+}
+
+.input1 td {
+padding: 10px;
+width: 200px;
+}
+
+.input1td {
+    padding: 10px; /* 셀 안의 여백 설정 */
+    background-color: white;
+    width: 200px;
+}
+
+.input2 {
+position: absolute;
+top: 300px;
+left: 100px;
+font-size: 30px; /* 글자 크기 조절 */
+}
+
+.input2td-1 {
+padding: 10px;
+background-color: white;
+height: 50px;
+width: 800px;
+white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
+overflow: hidden; /* 넘치는 부분을 감추도록 설정 */
+text-overflow: ellipsis;
+}
+
+
+.input2td.multi-line {
+padding: 10px;
+background-color: white;
+height: 500px;
+width: 800px;
+white-space: nowrap; /* 텍스트가 한 줄로 표시되도록 설정 */
+overflow: hidden; /* 넘치는 부분을 감추도록 설정 */
+text-overflow: ellipsis; /* 넘치는 부분에 ...을 표시하도록 설정 */
+height: 500px;
+white-space: normal; /* 텍스트가 여러 줄로 표시되도록 설정 */
+max-height: 3em; /* 최대 3줄까지 표시하도록 설정 */
+overflow: hidden; /* 넘치는 부분을 감추도록 설정 */
+}
+
+.okay{
+    
+    height: 50px; 
+    width: 100px;
+    margin-top: 510px; 
+    margin-left: 30px; 
+    background-color: #FF8224;
+    border: 2px solid #FFFFFF;
+    border-radius: 10px;
+    font-family: 'omyu_pretty';
+    font-size: 25px;
+}
