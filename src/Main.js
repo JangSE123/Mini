@@ -6,7 +6,6 @@ import './Main.css';
 import Chat from './Chat';
 import MyPage from './MyPage';
 import Write from './Write';
-import ListAdd from './ListAdd';
 
 export default function Main() {
     // 데이터를 상태로 관리

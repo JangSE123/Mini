@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Write.css';
 
-export default function Write(topics, setTopics, initialData, onClose) {
+export default function Write({ topics, setTopics, initialData, onClose }) {
   const [newPost, setNewPost] = useState({
     name: initialData?.name || "",
     profile: initialData?.profile || "",
@@ -30,38 +30,34 @@ export default function Write(topics, setTopics, initialData, onClose) {
       setTopics(updatedTopics);
       alert("수정 완료 !");
     } else {
+      const newTopic = {
+        id: topics.length + 1,
+        profile: newPost.profile,
+        name: newPost.name,
+        image: newPost.image,
+        item: newPost.item, 
+        price: newPost.price,
+        title: newPost.title,
+        content: newPost.content,
+        like: false 
+      };
 
-    const newTopic = {
-      id: topics.length + 1,
-      profile: newPost.profile,
-      name: newPost.name,
-      image: newPost.image,
-      item: newPost.item, 
-      price: newPost.price,
-      title: newPost.title,
-      content: newPost.content,
-      like: false 
-    };
-
-
-    setTopics(prevTopics => [...prevTopics, newTopic]);
-    console.log("Updated topics in Main:", topics);
-    alert("작성 완료 !");
-    
-
-    setNewPost({  
-      name: "",
-      profile: '',
-      image: "",
-      item: "",
-      price: "",
-      title: "",
-      content: "",
-    });
-    onClose();
-
+      setTopics(prevTopics => [...prevTopics, newTopic]);
+      alert("작성 완료 !");
+      setNewPost({  
+        name: "",
+        profile: '',
+        image: "",
+        item: "",
+        price: "",
+        title: "",
+        content: "",
+      });
+      if (onClose) {
+        onClose(); // onClose 함수가 존재하는 경우에만 호출
+      }
+    }
   };
-};
 
   return (
     <div className='Writeback'>
@@ -100,7 +96,6 @@ export default function Write(topics, setTopics, initialData, onClose) {
         <button className='okay' onClick={handleSubmit}>작성</button>
         <button className='okay'>취소</button>
       </div>
-      
     </div>
   );
 }

@@ -104,11 +104,11 @@ export default function MyPage({ topics, setTopics, handleLike }) {
 
       {showWrite && (
         <Write
-          topics={topics}
-          setTopics={setTopics}
-          initialData={writeData} // Write 컴포넌트에 전달할 초기값
-          onClose={handleWriteClose}
-        />
+        topics={topics}
+        setTopics={setTopics}
+        initialData={writeData}
+        onClose={handleWriteClose}
+      />
       )}
     </div>
   );
