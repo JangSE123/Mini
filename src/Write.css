@@ -21,17 +21,18 @@ margin-top: 20px;
 }
 
 .name {
-position: absolute; /* 절대 위치 설정 */
-margin-top: 170px; /* 원하는 상단 여백 조절 */
-margin-left: 60px; /* 원하는 좌측 여백 조절 */
+position: absolute; 
+margin-top: 170px; 
+margin-left: 60px; 
 }
 
-.sellingitem{
+.image{
 position: absolute; /* 절대 위치 설정 */
 top: 30px; /* 원하는 상단 여백 조절 */
 left: 200px; /* 원하는 좌측 여백 조절 */
 width: 250px;
 height: 250px;
+margin-top: 90px;
 }
 
 .input1 {
@@ -89,7 +90,7 @@ overflow: hidden; /* 넘치는 부분을 감추도록 설정 */
 }
 
 .okay{
-
+    
     height: 50px; 
     width: 100px;
     margin-top: 510px; 
@@ -99,5 +100,4 @@ overflow: hidden; /* 넘치는 부분을 감추도록 설정 */
     border-radius: 10px;
     font-family: 'omyu_pretty';
     font-size: 25px;
-
 }

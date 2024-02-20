@@ -32,22 +32,23 @@ export default function Content({ topics, setTopics, filteredTopics, handleLike 
             {showDetailModal && selectedItem && <Detail item={selectedItem} onClose={handleCloseModal} />}
             {!showDetailModal && (
                 <div>
-                    {topics.map((t, index) => (
+                    {topics.map((topic, index) => (
                         <div key={index}>
                             <div className='item' >
                                 <div>
-                                    <div className='profile-image'>{t.profile}</div>
-                                    <div className='profile-name'>{t.name}</div>
+                                    <div className='profile-image'>{topic.profile}</div>
+                                    <div className='profile-name'>{topic.name}</div>
                                 </div>
                                 <div>
-                                    <div className='product-image' onClick={() => handleItemClick(t)}><img src={t.image} alt={t.title} /></div>
-                                    <div onClick={() => handleLike(t.id)}>{t.like ? <FcLike /> : <FcLikePlaceholder />}</div>
+                                    <div className='product-image' onClick={() => handleItemClick(topic)}><img src={topic.image} alt={topic.title} /></div>
+                                    <div onClick={() => handleLike(topic.id)}>{topic.like ? <FcLike /> : <FcLikePlaceholder />}</div>
                                 </div>
-                                <div>{t.title}<br/>{t.item}<br/>가격: {t.price}</div>
+                                <div>{topic.title}<br />{topic.item}<br />가격: {topic.price}</div>
                                 <div></div>
                             </div>
                         </div>
                     ))}
+
                 </div>
             )}
         </div>

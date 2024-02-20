@@ -6,6 +6,7 @@ import './Main.css';
 import Chat from './Chat';
 import MyPage from './MyPage';
 import Write from './Write';
+import ListAdd from './ListAdd';
 
 export default function Main() {
     // 데이터를 상태로 관리
@@ -55,6 +56,8 @@ export default function Main() {
         like: false
       },
     ]);
+   
+    
 
     const handleLike = (id) => {
       setTopics(prevTopics =>
@@ -82,7 +85,7 @@ export default function Main() {
             <div>
                 <Topbar className='topbar' onSearch={handleSearch}/>
                 <Routes>
-                    <Route className='content' path='/Content' element={<Content topics=/*{topics}*/{filteredTopics} handleLike={handleLike} />} />
+                    <Route className='content' path='/Content' element={<Content topics={topics} handleLike={handleLike} />} />
                     <Route path='/Chat' element={<Chat />} />
                     <Route path='/MyPage' element={<MyPage />} />
                     <Route path='/Write' element={<Write topics={topics} setTopics={setTopics} />} />
