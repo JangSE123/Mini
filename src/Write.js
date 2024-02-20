@@ -14,16 +14,29 @@ export default function Write({ topics, setTopics, initialData, onClose }) {
   });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setNewPost({
-      ...newPost,
-      [name]: value,
-    });
+    if (e.target.name === 'image') {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewPost({
+          ...newPost,
+          image: reader.result
+        });
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    } else {
+      const { name, value } = e.target;
+      setNewPost({
+        ...newPost,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = () => {
     if (initialData) {
-      // 수정 모드에서는 기존 항목을 업데이트
       const updatedTopics = topics.map(topic =>
         topic.id === initialData.id ? { ...topic, ...newPost } : topic
       );
@@ -54,7 +67,7 @@ export default function Write({ topics, setTopics, initialData, onClose }) {
         content: "",
       });
       if (onClose) {
-        onClose(); // onClose 함수가 존재하는 경우에만 호출
+        onClose();
       }
     }
   };
@@ -63,6 +76,7 @@ export default function Write({ topics, setTopics, initialData, onClose }) {
     <div className='Writeback'>
       <div className='image'>
         <input type="file" name="image" onChange={handleInputChange} />
+        {newPost.image && <img src={newPost.image} alt="Uploaded" style={{ width: '100px', height: '100px' }} />}
       </div>
       <div className='input1'>
         <table>
@@ -94,7 +108,7 @@ export default function Write({ topics, setTopics, initialData, onClose }) {
       </div>
       <div>
         <button className='okay' onClick={handleSubmit}>작성</button>
-        <button className='okay'>취소</button>
+        {/* <button className='okay'>취소</button> */}
       </div>
     </div>
   );
